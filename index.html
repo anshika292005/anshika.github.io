@@ -8,7 +8,7 @@
       content="Live GitHub portfolio for Anshika with profile details, repository search, and project discovery."
     />
     <meta name="theme-color" content="#0d1117" />
-    <title>Anshika | GitHub Portfolio</title>
+    <title>Anshika Seth | Data Analyst Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -23,13 +23,14 @@
           />
 
           <div class="profile-heading">
-            <h1 id="profileName">Anshika</h1>
+            <p class="profile-kicker">Data Analyst Portfolio</p>
+            <h1 id="profileName">Anshika Seth</h1>
             <p id="profileUsername" class="username">@anshika292005</p>
-            <p class="role">GitHub Portfolio</p>
+            <p class="role">Data Analyst</p>
           </div>
         </div>
 
-        <p id="profileBio" class="bio">Loading GitHub profile details...</p>
+        <p id="profileBio" class="bio">Loading portfolio profile...</p>
 
         <a
           id="connectButton"
@@ -38,7 +39,7 @@
           target="_blank"
           rel="noreferrer"
         >
-          View GitHub Profile
+          Connect on GitHub
         </a>
 
         <div class="stat-grid" aria-label="GitHub profile stats">
@@ -103,8 +104,8 @@
       <main class="main-content fade-in">
         <header class="repo-header">
           <div>
-            <p class="eyebrow">Live GitHub Dashboard</p>
-            <h2>Repositories</h2>
+            <p class="eyebrow">GitHub-Backed Portfolio</p>
+            <h2>Repository Intelligence</h2>
           </div>
           <div class="summary-badges" aria-label="Repository stats">
             <span id="publicRepoBadge">0 Public</span>
@@ -112,13 +113,28 @@
           </div>
         </header>
 
+        <section class="insight-strip" aria-label="Portfolio insights">
+          <article class="insight-card">
+            <span class="insight-label">Total Stars</span>
+            <strong id="totalStars">0</strong>
+          </article>
+          <article class="insight-card">
+            <span class="insight-label">Total Forks</span>
+            <strong id="totalForks">0</strong>
+          </article>
+          <article class="insight-card insight-card-wide">
+            <span class="insight-label">Primary Focus</span>
+            <strong id="primaryLanguage">Loading...</strong>
+          </article>
+        </section>
+
         <section class="controls" aria-label="Repository search and filters">
           <label class="search-label" for="projectSearch">
             <span class="visually-hidden">Search repositories</span>
             <input
               id="projectSearch"
               type="search"
-              placeholder="Search any repository..."
+              placeholder="Search repositories, languages, or topics..."
               autocomplete="off"
             />
           </label>

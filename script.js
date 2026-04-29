@@ -1,4 +1,8 @@
 const GITHUB_USERNAME = "anshika292005";
+const DISPLAY_NAME = "Anshika Seth";
+const DISPLAY_ROLE = "Data Analyst";
+const DISPLAY_BIO =
+  "Turning repository activity into clear signals. I work across Python, SQL, dashboards, and data workflows to build practical analytics projects.";
 const GITHUB_HEADERS = {
   Accept: "application/vnd.github+json",
   "X-GitHub-Api-Version": "2022-11-28",
@@ -26,6 +30,9 @@ const publicRepoBadge = document.querySelector("#publicRepoBadge");
 const languageBadge = document.querySelector("#languageBadge");
 const skillsList = document.querySelector("#skillsList");
 const skillsCaption = document.querySelector("#skillsCaption");
+const totalStars = document.querySelector("#totalStars");
+const totalForks = document.querySelector("#totalForks");
+const primaryLanguage = document.querySelector("#primaryLanguage");
 
 let repositories = [];
 let activeFilter = "All";
@@ -120,7 +127,9 @@ function createRepoBanner(repo) {
 function createProjectCard(repo, index) {
   const repoTags = inferTags(repo);
   const tagMarkup = repoTags.map((tag) => `<span>${tag}</span>`).join("");
-  const description = repo.description || "No description added yet.";
+  const description =
+    repo.description ||
+    "Repository workspace for analysis, experimentation, and implementation details.";
   const badgeText = repo.private ? "Private" : "Public";
   const languageLabel = repo.language || "Repository";
   const updatedLabel = formatDate(repo.updated_at);
@@ -230,14 +239,14 @@ function renderProjects() {
 
 function updateProfile(profile) {
   profileImage.src = profile.avatar_url || "assets/profile.svg";
-  profileName.textContent = profile.name || "Anshika";
+  profileName.textContent = DISPLAY_NAME;
   profileUsername.textContent = `@${profile.login}`;
-  profileBio.textContent =
-    profile.bio || "GitHub profile loaded successfully. Explore repositories on the right.";
+  profileBio.textContent = profile.bio || DISPLAY_BIO;
   profileLocation.textContent = profile.location || "Location not listed";
   githubLink.href = profile.html_url;
   githubLink.textContent = profile.html_url.replace("https://", "");
   connectButton.href = profile.html_url;
+  connectButton.textContent = "Connect on GitHub";
   repoCount.textContent = formatNumber(profile.public_repos);
   followersCount.textContent = formatNumber(profile.followers);
   followingCount.textContent = formatNumber(profile.following);
@@ -263,9 +272,16 @@ function updateLanguageSummary() {
   }, {});
 
   const sortedLanguages = Object.entries(counts).sort((left, right) => right[1] - left[1]);
+  const stars = repositories.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+  const forks = repositories.reduce((sum, repo) => sum + (repo.forks_count || 0), 0);
 
   publicRepoBadge.textContent = `${formatNumber(repositories.length)} Public`;
   languageBadge.textContent = `${formatNumber(sortedLanguages.length)} Languages`;
+  totalStars.textContent = formatNumber(stars);
+  totalForks.textContent = formatNumber(forks);
+  primaryLanguage.textContent = sortedLanguages.length
+    ? `${sortedLanguages[0][0]} (${sortedLanguages[0][1]} repos)`
+    : DISPLAY_ROLE;
 
   if (!sortedLanguages.length) {
     skillsList.innerHTML = "<span>No languages detected yet</span>";
