@@ -26,6 +26,58 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Generate GitHub data
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+            const username = "anshika292005";
+
+            const { data: profile } = await github.rest.users.getByUsername({
+              username,
+            });
+
+            const repositories = await github.paginate(
+              github.rest.repos.listForUser,
+              {
+                username,
+                per_page: 100,
+                sort: "updated",
+              }
+            );
+
+            const output = {
+              profile: {
+                login: profile.login,
+                name: profile.name,
+                avatar_url: profile.avatar_url,
+                html_url: profile.html_url,
+                bio: profile.bio,
+                blog: profile.blog,
+                location: profile.location,
+                public_repos: profile.public_repos,
+                followers: profile.followers,
+                following: profile.following,
+                updated_at: profile.updated_at,
+              },
+              repositories: repositories.map((repo) => ({
+                name: repo.name,
+                html_url: repo.html_url,
+                description: repo.description,
+                language: repo.language,
+                stargazers_count: repo.stargazers_count,
+                forks_count: repo.forks_count,
+                open_issues_count: repo.open_issues_count,
+                private: repo.private,
+                fork: repo.fork,
+                archived: repo.archived,
+                updated_at: repo.updated_at,
+                topics: repo.topics || [],
+              })),
+            };
+
+            fs.writeFileSync("github-data.json", JSON.stringify(output, null, 2));
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

@@ -5,61 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Anshika's data analyst portfolio featuring dashboards, analytics projects, SQL, Python, Excel, and BI work."
+      content="Live GitHub portfolio for Anshika with profile details, repository search, and project discovery."
     />
     <meta name="theme-color" content="#0d1117" />
-    <title>Anshika | Data Analyst Portfolio</title>
+    <title>Anshika | GitHub Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="page-shell">
       <aside class="profile-panel fade-in">
-        <img
-          class="profile-image"
-          src="assets/profile.svg"
-          alt="Anshika profile avatar"
-        />
+        <div class="profile-top">
+          <img
+            id="profileImage"
+            class="profile-image"
+            src="assets/profile.svg"
+            alt="GitHub profile avatar"
+          />
 
-        <div class="profile-heading">
-          <h1>Anshika</h1>
-          <p class="username">@anshika292005</p>
-          <p class="role">Data Analyst</p>
+          <div class="profile-heading">
+            <h1 id="profileName">Anshika</h1>
+            <p id="profileUsername" class="username">@anshika292005</p>
+            <p class="role">GitHub Portfolio</p>
+          </div>
         </div>
 
-        <p class="bio">
-          Turning data into actionable insights. I build dashboards, models, and
-          analytics solutions.
-        </p>
+        <p id="profileBio" class="bio">Loading GitHub profile details...</p>
 
-        <a class="connect-button" href="mailto:anshika@example.com">
-          Contact / Connect
+        <a
+          id="connectButton"
+          class="connect-button"
+          href="https://github.com/anshika292005"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View GitHub Profile
         </a>
 
-        <ul class="contact-list" aria-label="Contact information">
+        <div class="stat-grid" aria-label="GitHub profile stats">
+          <div class="stat-card">
+            <span class="stat-label">Repos</span>
+            <strong id="repoCount">--</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Followers</span>
+            <strong id="followersCount">--</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Following</span>
+            <strong id="followingCount">--</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Updated</span>
+            <strong id="updatedDate">--</strong>
+          </div>
+        </div>
+
+        <ul id="contactList" class="contact-list" aria-label="GitHub profile details">
+          <li>
+            <span class="contact-icon">USR</span>
+            <a
+              id="githubLink"
+              href="https://github.com/anshika292005"
+              target="_blank"
+              rel="noreferrer"
+            >
+              github.com/anshika292005
+            </a>
+          </li>
           <li>
             <span class="contact-icon">LOC</span>
-            <span>India</span>
+            <span id="profileLocation">Loading...</span>
           </li>
           <li>
-            <span class="contact-icon">MAIL</span>
-            <a href="mailto:anshika@example.com">anshika@example.com</a>
-          </li>
-          <li>
-            <span class="contact-icon">in</span>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-              LinkedIn
+            <span class="contact-icon">WEB</span>
+            <a
+              id="profileWebsite"
+              href="https://github.com/anshika292005"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
             </a>
           </li>
         </ul>
 
         <section class="skills-section" aria-labelledby="skills-title">
-          <h2 id="skills-title">Skills</h2>
-          <div class="skills-list">
-            <span>Excel</span>
-            <span>SQL</span>
-            <span>Python</span>
-            <span>Pandas</span>
-            <span>Tableau / Power BI</span>
+          <div class="section-title-row">
+            <h2 id="skills-title">Top Languages</h2>
+            <span id="skillsCaption" class="section-caption">From repositories</span>
+          </div>
+          <div id="skillsList" class="skills-list">
+            <span>Loading</span>
           </div>
         </section>
       </aside>
@@ -67,54 +103,42 @@
       <main class="main-content fade-in">
         <header class="repo-header">
           <div>
-            <p class="eyebrow">Portfolio Dashboard</p>
+            <p class="eyebrow">Live GitHub Dashboard</p>
             <h2>Repositories</h2>
           </div>
-          <div class="summary-badges" aria-label="Portfolio stats">
-            <span>5 Projects</span>
-            <span>4 Tools</span>
+          <div class="summary-badges" aria-label="Repository stats">
+            <span id="publicRepoBadge">0 Public</span>
+            <span id="languageBadge">0 Languages</span>
           </div>
         </header>
 
-        <section class="controls" aria-label="Project search and filters">
+        <section class="controls" aria-label="Repository search and filters">
           <label class="search-label" for="projectSearch">
-            <span class="visually-hidden">Find a project</span>
+            <span class="visually-hidden">Search repositories</span>
             <input
               id="projectSearch"
               type="search"
-              placeholder="Find a project..."
+              placeholder="Search any repository..."
               autocomplete="off"
             />
           </label>
 
-          <div class="filter-tabs" role="tablist" aria-label="Project filters">
-            <button class="filter-tab active" type="button" data-filter="All">
-              All
-            </button>
-            <button class="filter-tab" type="button" data-filter="Excel">
-              Excel
-            </button>
-            <button class="filter-tab" type="button" data-filter="Python">
-              Python
-            </button>
-            <button class="filter-tab" type="button" data-filter="Dashboard">
-              Dashboard
-            </button>
-            <button class="filter-tab" type="button" data-filter="SQL">
-              SQL
-            </button>
-          </div>
+          <div id="filterTabs" class="filter-tabs" role="tablist" aria-label="Language filters"></div>
         </section>
+
+        <p id="statusMessage" class="status-message" role="status">
+          Fetching repositories from GitHub...
+        </p>
 
         <section
           id="projectsGrid"
           class="projects-grid"
           aria-live="polite"
-          aria-label="Project repositories"
+          aria-label="GitHub repositories"
         ></section>
 
         <p id="emptyState" class="empty-state" hidden>
-          No matching projects found.
+          No repositories match your search.
         </p>
       </main>
     </div>
