@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Anshika's data analyst portfolio featuring dashboards, analytics projects, SQL, Python, Excel, and BI work."
+    />
+    <title>Anshika | Data Analyst Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="profile-panel fade-in">
+        <img
+          class="profile-image"
+          src="assets/profile.svg"
+          alt="Anshika profile avatar"
+        />
+
+        <div class="profile-heading">
+          <h1>Anshika</h1>
+          <p class="username">@anshika292005</p>
+          <p class="role">Data Analyst</p>
+        </div>
+
+        <p class="bio">
+          Turning data into actionable insights. I build dashboards, models, and
+          analytics solutions.
+        </p>
+
+        <a class="connect-button" href="mailto:anshika@example.com">
+          Contact / Connect
+        </a>
+
+        <ul class="contact-list" aria-label="Contact information">
+          <li>
+            <span class="contact-icon">LOC</span>
+            <span>India</span>
+          </li>
+          <li>
+            <span class="contact-icon">MAIL</span>
+            <a href="mailto:anshika@example.com">anshika@example.com</a>
+          </li>
+          <li>
+            <span class="contact-icon">in</span>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+          </li>
+        </ul>
+
+        <section class="skills-section" aria-labelledby="skills-title">
+          <h2 id="skills-title">Skills</h2>
+          <div class="skills-list">
+            <span>Excel</span>
+            <span>SQL</span>
+            <span>Python</span>
+            <span>Pandas</span>
+            <span>Tableau / Power BI</span>
+          </div>
+        </section>
+      </aside>
+
+      <main class="main-content fade-in">
+        <header class="repo-header">
+          <div>
+            <p class="eyebrow">Portfolio Dashboard</p>
+            <h2>Repositories</h2>
+          </div>
+          <div class="summary-badges" aria-label="Portfolio stats">
+            <span>5 Projects</span>
+            <span>4 Tools</span>
+          </div>
+        </header>
+
+        <section class="controls" aria-label="Project search and filters">
+          <label class="search-label" for="projectSearch">
+            <span class="visually-hidden">Find a project</span>
+            <input
+              id="projectSearch"
+              type="search"
+              placeholder="Find a project..."
+              autocomplete="off"
+            />
+          </label>
+
+          <div class="filter-tabs" role="tablist" aria-label="Project filters">
+            <button class="filter-tab active" type="button" data-filter="All">
+              All
+            </button>
+            <button class="filter-tab" type="button" data-filter="Excel">
+              Excel
+            </button>
+            <button class="filter-tab" type="button" data-filter="Python">
+              Python
+            </button>
+            <button class="filter-tab" type="button" data-filter="Dashboard">
+              Dashboard
+            </button>
+            <button class="filter-tab" type="button" data-filter="SQL">
+              SQL
+            </button>
+          </div>
+        </section>
+
+        <section
+          id="projectsGrid"
+          class="projects-grid"
+          aria-live="polite"
+          aria-label="Project repositories"
+        ></section>
+
+        <p id="emptyState" class="empty-state" hidden>
+          No matching projects found.
+        </p>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
